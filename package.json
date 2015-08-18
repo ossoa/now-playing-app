@@ -1,0 +1,17 @@
+{
+  "name": "now-playing-feed-app",
+  "version": "0.0.0",
+  "description": "App",
+  "main": "app/main.js",
+  "scripts": {
+    "dev": "webpack-dev-server --devtool eval --progress --colors --content-base build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ossoa/now-playing-feed.git"
+  },
+  "devDependencies": {
+    "webpack": "^1.11.0",
+    "webpack-dev-server": "^1.10.1"
+  }
+}

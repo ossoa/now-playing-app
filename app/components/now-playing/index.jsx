@@ -2,6 +2,7 @@ var React = require('react');
 var http = require('../../utils/http');
 var TweetText = require('../tweet-text/index.jsx');
 var SpotifyImage = require('../spotify-image/index.jsx');
+var AudioPlayback = require('../audio-playback/index.jsx');
 require('./styles.scss');
 
 var NowPlayingBox = React.createClass({
@@ -13,7 +14,6 @@ var NowPlayingBox = React.createClass({
       }
 
       var data = data.responseText ? JSON.parse(data.responseText) : null;
-      console.log(data);
       this.setState({data:data});
     }.bind(this));
   },
@@ -32,6 +32,7 @@ var NowPlayingBox = React.createClass({
       return (
         <div className="now-playing-box">
           <SpotifyImage spotify={spotifyData} />
+          <AudioPlayback spotify={spotifyData} />
           <TweetText tweet={tweetData} />
         </div>
       );

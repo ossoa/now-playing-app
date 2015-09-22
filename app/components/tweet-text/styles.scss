@@ -1,20 +1,20 @@
 .tweet-box {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.8);
   padding: 30px;
   position: absolute;
   bottom: 16px;
   left: 16px;
   right: 16px;
 
-  .tb-text {
-    font-size: 3rem;
-  }
-
   p {
     margin: 0;
   }
 
-  &:hover {
+  .tb-text {
+    font-size: 3rem;
+  }
+
+  .tb-text:hover {
     cursor: pointer;
   }
 }

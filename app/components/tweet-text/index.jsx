@@ -13,9 +13,9 @@ var TweetText = React.createClass({
     var userUrl = 'https:/twitter.com/' + tweet.user.screen_name;
 
     return (
-      <div className="tweet-box" onClick={this.openTweet}>
-        <p className="tb-text">{tweet.text}</p>
-        <p className="tb-user">by {tweet.user.screen_name}</p>
+      <div className="tweet-box">
+        <p className="tb-text" onClick={this.openTweet}>{tweet.text}</p>
+        <p className="tb-user">by <a href={userUrl}>{tweet.user.screen_name}</a></p>
       </div>
     );
   }

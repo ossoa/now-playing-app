@@ -1,6 +1,18 @@
 var React = require('react');
 
 var AudioPlayback = React.createClass({
+  togglePlay: function(event) {
+    if (event.keyCode !== 32) return;
+
+    this.isMuted = !this.isMuted;
+
+    if (this.audio) {
+      this.audio.muted = this.isMuted;
+    }
+
+    console.log('[muted]', this.isMuted);
+  },
+
   getPreview: function(spotifyObj) {
     var spotifyObj = spotifyObj;
 
@@ -24,6 +36,9 @@ var AudioPlayback = React.createClass({
       this.audio = this.getDOMNode();
       this.audio.play();
     }
+
+    this.isMuted = false;
+    window.addEventListener('keypress', this.togglePlay);
   },
 
   shouldComponentUpdate: function(nextProps) {
@@ -48,10 +63,11 @@ var AudioPlayback = React.createClass({
 
   render: function() {
     var previewUrl = this.getPreview(this.props.spotify);
+    var isMuted = !!this.isMuted;
 
     if (previewUrl) {
       return (
-        <audio>
+        <audio muted={isMuted}>
           <source src={previewUrl} type="audio/mpeg" />
         </audio>
       );

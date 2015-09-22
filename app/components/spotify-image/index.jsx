@@ -2,6 +2,16 @@ var React = require('react');
 require('./styles.scss');
 
 var SpotifyImage = React.createClass({
+  openSpotify: function() {
+    var spotify = this.props.spotify;
+    var temp = spotify.uri.split(':');
+    temp.splice(0, 1);
+
+    var spotifyUrl = 'https://open.spotify.com/' + temp.join('/');
+    
+    window.open(spotifyUrl, '_blank');
+  },
+
   getImageUrl: function() {
     var spotifyObj = this.props.spotify;
 
@@ -28,7 +38,7 @@ var SpotifyImage = React.createClass({
     }
 
     return (
-      <div className={classString} style={imageStyle}></div>
+      <div className={classString} style={imageStyle} onClick={this.openSpotify}></div>
     );
   }
 });

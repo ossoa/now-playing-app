@@ -5,7 +5,7 @@ require('./app.scss');
 module.exports = React.createClass({
   render: function () {
     return (
-      <NowPlayingBox url="https://now-playing-feed.herokuapp.com/" pollInterval={10000} />
+      <NowPlayingBox url="https://now-playing-feed.herokuapp.com/" pollInterval={20000} />
     );
   }
 });

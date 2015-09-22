@@ -1,17 +1,18 @@
 var React = require('react');
-var http = require('../utils/http');
-var TweetText = require('./TweetText.jsx');
+var http = require('../../utils/http');
+var TweetText = require('../tweet-text/index.jsx');
+require('./styles.scss');
 
 var NowPlayingBox = React.createClass({
   loadNowPlayingItemFromServer: function() {
     http.request('GET', this.props.url, function(error, data) {
-      console.log('data', data);
       if (error) {
         console.error(this.props.url, status, error.toString());
         return;
       }
 
       var data = data.responseText ? JSON.parse(data.responseText) : null;
+      console.log(data);
       this.setState({data:data});
     }.bind(this));
   },
@@ -25,11 +26,19 @@ var NowPlayingBox = React.createClass({
   render: function() {
     var tweetData = this.state.data.tweet;
 
-    return (
-      <div className="nowPlayingBox">
-        <TweetText tweet={tweetData} />
-      </div>
-    );
+    if (tweetData) {
+      return (
+        <div className="now-playing-box">
+          <TweetText tweet={tweetData} />
+        </div>
+      );
+    } else {
+      return (
+        <div className="loading-box">
+          Loading...
+        </div>
+      );
+    }
   }
 });
 

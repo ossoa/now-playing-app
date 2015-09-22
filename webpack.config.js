@@ -14,7 +14,16 @@ var config = {
   module: {
     noParse: [npm_dir + '/react/react.min.js'],
     loaders: [
-      { test: /\.jsx$/, loader: 'jsx-loader' }
+      {
+        test: /\.jsx$/,
+        loader: 'jsx-loader'
+      },
+      
+      // SASS
+      {
+        test: /\.scss$/,
+        loader: 'style!css!sass'
+      }
     ]
   }
 };

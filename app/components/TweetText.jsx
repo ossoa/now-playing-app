@@ -4,7 +4,6 @@ var TweetText = React.createClass({
   render: function() {
     var tweet = this.props.tweet;
 
-    console.log(tweet);
     if (tweet) {
       return (
         <div className="nowPlayingBox">

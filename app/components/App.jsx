@@ -1,5 +1,6 @@
 var React = require('react');
 var NowPlayingBox = require('./NowPlaying.jsx');
+require('./main.scss');
 
 module.exports = React.createClass({
   render: function () {

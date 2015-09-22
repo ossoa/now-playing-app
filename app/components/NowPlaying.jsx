@@ -23,7 +23,6 @@ var NowPlayingBox = React.createClass({
     setInterval(this.loadNowPlayingItemFromServer, this.props.pollInterval);
   },
   render: function() {
-    console.log(this.state.data);
     var tweetData = this.state.data.tweet;
 
     return (

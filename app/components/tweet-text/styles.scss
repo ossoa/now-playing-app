@@ -1,6 +1,6 @@
 .tweet-box {
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 30px;
+  padding: 16px;
   position: absolute;
   bottom: 16px;
   left: 16px;
@@ -11,10 +11,20 @@
   }
 
   .tb-text {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 
   .tb-text:hover {
     cursor: pointer;
+  }
+}
+
+@media (min-width: 800px) and (min-height: 800px) {
+  .tweet-box {
+    padding: 30px;
+
+    .tb-text {
+      font-size: 3rem;
+    }
   }
 }

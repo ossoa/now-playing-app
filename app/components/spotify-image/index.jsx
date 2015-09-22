@@ -8,7 +8,7 @@ var SpotifyImage = React.createClass({
     temp.splice(0, 1);
 
     var spotifyUrl = 'https://open.spotify.com/' + temp.join('/');
-    
+
     window.open(spotifyUrl, '_blank');
   },
 
@@ -35,6 +35,9 @@ var SpotifyImage = React.createClass({
     var imageStyle = {};
     if (imageUrl) {
       imageStyle.backgroundImage ='url(' + imageUrl + ')';
+
+      var body = document.querySelector('.body-blur');
+      body.setAttribute('style', 'background-image:url(' + this.getImageUrl() + ')');
     }
 
     return (

@@ -2,12 +2,16 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%);
 }
 
 .now-playing-box {
-  padding: 30px;
-  position: relative;
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  height: 100vmin;
+  width: 100vmin;
+  margin: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
 }

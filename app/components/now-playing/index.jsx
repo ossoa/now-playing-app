@@ -1,6 +1,7 @@
 var React = require('react');
 var http = require('../../utils/http');
 var TweetText = require('../tweet-text/index.jsx');
+var SpotifyImage = require('../spotify-image/index.jsx');
 require('./styles.scss');
 
 var NowPlayingBox = React.createClass({
@@ -25,10 +26,12 @@ var NowPlayingBox = React.createClass({
   },
   render: function() {
     var tweetData = this.state.data.tweet;
+    var spotifyData = this.state.data.spotify;
 
     if (tweetData) {
       return (
         <div className="now-playing-box">
+          <SpotifyImage spotify={spotifyData} />
           <TweetText tweet={tweetData} />
         </div>
       );

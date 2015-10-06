@@ -6,6 +6,19 @@ var AudioPlayback = require('../audio-playback/index.jsx');
 require('./styles.scss');
 
 var NowPlayingBox = React.createClass({
+  getPreview: function(spotifyObj) {
+    if (!spotifyObj) return false;
+
+    switch (spotifyObj.type) {
+      case 'track':
+        return spotifyObj.preview_url;
+      case 'playlist':
+      case 'album':
+      case 'artist':
+      default:
+        return false;
+    }
+  },
   loadNowPlayingItemFromServer: function() {
     http.request('GET', this.props.url, function(error, data) {
       if (error) {
@@ -27,13 +40,14 @@ var NowPlayingBox = React.createClass({
   render: function() {
     var tweetData = this.state.data.tweet;
     var spotifyData = this.state.data.spotify;
+    var audioUrl = this.getPreview(spotifyData);
 
     if (tweetData) {
       return (
         <div className="now-playing-box">
           <SpotifyImage spotify={spotifyData} />
-          <AudioPlayback spotify={spotifyData} />
           <TweetText tweet={tweetData} />
+          <AudioPlayback audio={audioUrl} />
         </div>
       );
     } else {

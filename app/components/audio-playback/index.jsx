@@ -13,20 +13,6 @@ var AudioPlayback = React.createClass({
     console.log('[muted]', this.isMuted);
   },
 
-  getPreview: function(spotifyObj) {
-    var spotifyObj = spotifyObj;
-
-    switch (spotifyObj.type) {
-      case 'track':
-        return spotifyObj.preview_url;
-      case 'playlist':
-      case 'album':
-      case 'artist':
-      default:
-        return false;
-    }
-  },
-
   getDOMNodeTag: function() {
     return this.getDOMNode() ? this.getDOMNode().tagName : null;
   },
@@ -42,7 +28,7 @@ var AudioPlayback = React.createClass({
   },
 
   shouldComponentUpdate: function(nextProps) {
-    return nextProps.spotify.uri !== this.props.spotify.uri;
+    return nextProps.audio !== this.props.audio;
   },
 
   componentDidUpdate: function(prevProps) {
@@ -62,13 +48,13 @@ var AudioPlayback = React.createClass({
   },
 
   render: function() {
-    var previewUrl = this.getPreview(this.props.spotify);
+    var audioUrl = this.props.audio;
     var isMuted = !!this.isMuted;
 
-    if (previewUrl) {
+    if (audioUrl) {
       return (
         <audio muted={isMuted}>
-          <source src={previewUrl} type="audio/mpeg" />
+          <source src={audioUrl} type="audio/mpeg" />
         </audio>
       );
     } else {

@@ -1,11 +1,11 @@
-.loading-box {
+:local(.loadingBox) {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.now-playing-box {
+:local(.nowPlayingBox) {
   position: absolute;
   height: 80vmin;
   width: 80vmin;

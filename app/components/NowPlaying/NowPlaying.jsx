@@ -3,7 +3,7 @@ var http = require('../../utils/http');
 var TweetText = require('../TweetText');
 var SpotifyImage = require('../SpotifyImage');
 var AudioPlayback = require('../AudioPlayback');
-require('./NowPlaying.scss');
+var styles = require('./NowPlaying.scss');
 
 var NowPlayingBox = React.createClass({
   getPreview: function(spotifyObj) {
@@ -44,7 +44,7 @@ var NowPlayingBox = React.createClass({
 
     if (tweetData) {
       return (
-        <div className="now-playing-box">
+        <div className={styles.nowPlayingBox}>
           <SpotifyImage spotify={spotifyData} />
           <TweetText tweet={tweetData} />
           <AudioPlayback audio={audioUrl} />
@@ -52,7 +52,7 @@ var NowPlayingBox = React.createClass({
       );
     } else {
       return (
-        <div className="loading-box">
+        <div className={styles.loadingBox}>
           Loading...
         </div>
       );

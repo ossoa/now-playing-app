@@ -1,5 +1,5 @@
 var React = require('react');
-require('./SpotifyImage.scss');
+var styles = require('./SpotifyImage.scss');
 
 var SpotifyImage = React.createClass({
   openSpotify: function() {
@@ -31,7 +31,7 @@ var SpotifyImage = React.createClass({
   },
   render: function() {
     var imageUrl = this.getImageUrl();
-    var classString = 'spotify-image ' + this.props.spotify.type;
+    var classString = styles.spotifyImage + ' ' + this.props.spotify.type;
     var imageStyle = {};
     if (imageUrl) {
       imageStyle.backgroundImage ='url(' + imageUrl + ')';

@@ -1,4 +1,4 @@
-.tweet-box {
+:local(.tweetBox) {
   background-color: rgba(255, 255, 255, 0.8);
   padding: 16px;
   position: absolute;
@@ -10,20 +10,20 @@
     margin: 0;
   }
 
-  .tb-text {
+  :local(.tbText) {
     font-size: 2rem;
   }
 
-  .tb-text:hover {
+  :local(.tbText):hover {
     cursor: pointer;
   }
 }
 
 @media (min-width: 800px) and (min-height: 800px) {
-  .tweet-box {
+  :local(.tweetBox) {
     padding: 30px;
 
-    .tb-text {
+    :local(.tbText) {
       font-size: 3rem;
     }
   }

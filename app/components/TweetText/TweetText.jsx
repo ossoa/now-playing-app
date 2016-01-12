@@ -1,5 +1,5 @@
 var React = require('react');
-require('./TweetText.scss');
+var styles = require('./TweetText.scss');
 
 var TweetText = React.createClass({
   openTweet: function() {
@@ -13,9 +13,9 @@ var TweetText = React.createClass({
     var userUrl = 'https:/twitter.com/' + tweet.user.screen_name;
 
     return (
-      <div className="tweet-box">
-        <p className="tb-text" onClick={this.openTweet}>{tweet.text}</p>
-        <p className="tb-user">by <a href={userUrl}>{tweet.user.screen_name}</a></p>
+      <div className={styles.tweetBox}>
+        <p className={styles.tbText} onClick={this.openTweet}>{tweet.text}</p>
+        <p className={styles.tbUser}>by <a href={userUrl}>{tweet.user.screen_name}</a></p>
       </div>
     );
   }

@@ -1,5 +1,5 @@
 var React = require('react');
-require('./styles.scss');
+require('./TweetText.scss');
 
 var TweetText = React.createClass({
   openTweet: function() {

@@ -1,5 +1,5 @@
 var React = require('react');
-require('./styles.scss');
+require('./SpotifyImage.scss');
 
 var SpotifyImage = React.createClass({
   openSpotify: function() {

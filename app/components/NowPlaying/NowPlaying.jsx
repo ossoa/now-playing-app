@@ -1,9 +1,9 @@
 var React = require('react');
 var http = require('../../utils/http');
-var TweetText = require('../tweet-text/index.jsx');
-var SpotifyImage = require('../spotify-image/index.jsx');
-var AudioPlayback = require('../audio-playback/index.jsx');
-require('./styles.scss');
+var TweetText = require('../TweetText');
+var SpotifyImage = require('../SpotifyImage');
+var AudioPlayback = require('../AudioPlayback');
+require('./NowPlaying.scss');
 
 var NowPlayingBox = React.createClass({
   getPreview: function(spotifyObj) {

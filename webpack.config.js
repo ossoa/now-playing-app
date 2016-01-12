@@ -1,10 +1,4 @@
-var npm_dir = __dirname + '/node_modules';
-
 var config = {
-  addVendor: function (name, path) {
-    this.resolve.alias[name] = path;
-    this.module.noParse.push(new RegExp(path));
-  },
   entry: ['./app/main.jsx'],
   resolve: { alias: {} },
   output: {
@@ -12,13 +6,16 @@ var config = {
     filename: 'bundle.js'
   },
   module: {
-    noParse: [npm_dir + '/react/react.min.js'],
     loaders: [
       {
-        test: /\.jsx$/,
-        loader: 'jsx-loader'
+        test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel',
+        query: {
+          presets: ['react']
+        }
       },
-      
+
       // SASS
       {
         test: /\.scss$/,
@@ -27,7 +24,5 @@ var config = {
     ]
   }
 };
-
-config.addVendor('react', npm_dir + '/react/dist/react.min.js');
 
 module.exports = config;

@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
 
 var AudioPlayback = React.createClass({
   togglePlay: function(event) {
@@ -14,7 +15,7 @@ var AudioPlayback = React.createClass({
   },
 
   getDOMNodeTag: function() {
-    return this.getDOMNode() ? this.getDOMNode().tagName : null;
+    return ReactDOM.findDOMNode() ? ReactDOM.findDOMNode().tagName : null;
   },
 
   componentDidMount: function() {

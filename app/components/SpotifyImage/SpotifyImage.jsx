@@ -1,19 +1,19 @@
-var React = require('react');
-var styles = require('./SpotifyImage.scss');
+import React, { Component } from 'react';
+import styles from './SpotifyImage.scss';
 
-var SpotifyImage = React.createClass({
-  openSpotify: function() {
-    var spotify = this.props.spotify;
-    var temp = spotify.uri.split(':');
+export default class SpotifyImage extends Component {
+  openSpotify() {
+    let spotify = this.props.spotify;
+    let temp = spotify.uri.split(':');
     temp.splice(0, 1);
 
-    var spotifyUrl = 'https://open.spotify.com/' + temp.join('/');
+    let spotifyUrl = 'https://open.spotify.com/' + temp.join('/');
 
     window.open(spotifyUrl, '_blank');
-  },
+  }
 
-  getImageUrl: function() {
-    var spotifyObj = this.props.spotify;
+  getImageUrl() {
+    let spotifyObj = this.props.spotify;
 
     switch (spotifyObj.type) {
       case 'track':
@@ -28,11 +28,13 @@ var SpotifyImage = React.createClass({
         return false;
     }
 
-  },
-  render: function() {
-    var imageUrl = this.getImageUrl();
-    var classString = styles.spotifyImage + ' ' + this.props.spotify.type;
-    var imageStyle = {};
+  }
+
+  render() {
+    let imageUrl = this.getImageUrl();
+    let classString = styles.spotifyImage + ' ' + this.props.spotify.type;
+    let imageStyle = {};
+
     if (imageUrl) {
       imageStyle.backgroundImage ='url(' + imageUrl + ')';
 
@@ -44,6 +46,4 @@ var SpotifyImage = React.createClass({
       <div className={classString} style={imageStyle} onClick={this.openSpotify}></div>
     );
   }
-});
-
-module.exports = SpotifyImage;
+};

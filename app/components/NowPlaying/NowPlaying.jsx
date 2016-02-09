@@ -1,12 +1,20 @@
-var React = require('react');
-var http = require('../../utils/http');
-var TweetText = require('../TweetText');
-var SpotifyImage = require('../SpotifyImage');
-var AudioPlayback = require('../AudioPlayback');
-var styles = require('./NowPlaying.scss');
+import React, { Component } from 'react';
+import http from '../../utils/http';
+import TweetText from '../TweetText';
+import SpotifyImage from '../SpotifyImage';
+import AudioPlayback from '../AudioPlayback';
+import styles from './NowPlaying.scss';
 
-var NowPlayingBox = React.createClass({
-  getPreview: function(spotifyObj) {
+export default class NowPlayingBox extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: {}
+    };
+  }
+
+  getPreview (spotifyObj) {
     if (!spotifyObj) return false;
 
     switch (spotifyObj.type) {
@@ -18,29 +26,29 @@ var NowPlayingBox = React.createClass({
       default:
         return false;
     }
-  },
-  loadNowPlayingItemFromServer: function() {
-    http.request('GET', this.props.url, function(error, data) {
+  }
+
+  loadNowPlayingItemFromServer() {
+    http.request('GET', this.props.url, function(error, response) {
       if (error) {
         console.error(this.props.url, status, error.toString());
         return;
       }
 
-      var data = data.responseText ? JSON.parse(data.responseText) : null;
+      let data = response.responseText ? JSON.parse(response.responseText) : null;
       this.setState({data:data});
     }.bind(this));
-  },
-  getInitialState: function() {
-    return {data: {}};
-  },
-  componentDidMount: function() {
+  }
+
+  componentDidMount() {
     this.loadNowPlayingItemFromServer();
-    setInterval(this.loadNowPlayingItemFromServer, this.props.pollInterval);
-  },
-  render: function() {
-    var tweetData = this.state.data.tweet;
-    var spotifyData = this.state.data.spotify;
-    var audioUrl = this.getPreview(spotifyData);
+    setInterval(this.loadNowPlayingItemFromServer.bind(this), this.props.pollInterval);
+  }
+
+  render() {
+    let tweetData = this.state.data.tweet;
+    let spotifyData = this.state.data.spotify;
+    let audioUrl = this.getPreview(spotifyData);
 
     if (tweetData) {
       return (
@@ -58,6 +66,4 @@ var NowPlayingBox = React.createClass({
       );
     }
   }
-});
-
-module.exports = NowPlayingBox;
+};

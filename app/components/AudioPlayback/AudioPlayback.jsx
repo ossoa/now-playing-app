@@ -1,43 +1,45 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
+import React, { Component } from 'react';
 
-var AudioPlayback = React.createClass({
-  togglePlay: function(event) {
+export default class AudioPlayback extends Component {
+  togglePlay(event) {
+    console.log('toggle play');
     if (event.keyCode !== 32) return;
 
     this.isMuted = !this.isMuted;
+
+    console.log(this._audio);
 
     if (this._audio) {
       this._audio.muted = this.isMuted;
     }
 
     console.log('[muted]', this.isMuted);
-  },
+  }
 
-  componentDidMount: function() {
+  componentDidMount() {
     if (this.props.audio) {
       this._audio.play();
     }
 
     this.isMuted = false;
-    window.addEventListener('keypress', this.togglePlay);
-  },
+    window.addEventListener('keypress', this.togglePlay.bind(this));
+  }
 
-  shouldComponentUpdate: function(nextProps) {
+  shouldComponentUpdate(nextProps) {
     return nextProps.audio !== this.props.audio;
-  },
+  }
 
-  componentDidUpdate: function(prevProps) {
+  componentDidUpdate(prevProps) {
     if (this.props.audio) {
       this._audio.pause();
       this._audio.load();
       this._audio.play();
     }
-  },
+  }
 
-  render: function() {
-    var audioUrl = this.props.audio;
-    var isMuted = !!this.isMuted;
+  render() {
+    let audioUrl = this.props.audio;
+    let isMuted = !!this.isMuted;
 
     if (audioUrl) {
       return (
@@ -49,6 +51,4 @@ var AudioPlayback = React.createClass({
       return false;
     }
   }
-});
-
-module.exports = AudioPlayback;
+};

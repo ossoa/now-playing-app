@@ -1,9 +1,9 @@
-var React = require('react');
-var NowPlayingBox = require('../NowPlaying');
-require('./App.scss');
+import React, { Component } from 'react';
+import NowPlayingBox from '../NowPlaying';
+import './App.scss';
 
-module.exports = React.createClass({
-  render: function () {
+export default class App extends Component {
+  render() {
     return (
       <div>
         <div className="body-blur"></div>
@@ -11,4 +11,4 @@ module.exports = React.createClass({
       </div>
     );
   }
-});
+};

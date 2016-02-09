@@ -1,1 +1,1 @@
-module.exports = require('./SpotifyImage.jsx');
+export {default} from './SpotifyImage.jsx';

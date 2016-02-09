@@ -1,16 +1,17 @@
-var React = require('react');
-var styles = require('./TweetText.scss');
+import React, { Component } from 'react';
+import styles from './TweetText.scss';
 
-var TweetText = React.createClass({
-  openTweet: function() {
-    var tweet = this.props.tweet;
-    var tweetUrl = 'https:/twitter.com/' + tweet.user.screen_name + '/status/' + tweet.id_str;
+export default class TweetText extends Component {
+  openTweet() {
+    let tweet = this.props.tweet;
+    let tweetUrl = 'https:/twitter.com/' + tweet.user.screen_name + '/status/' + tweet.id_str;
 
     window.open(tweetUrl, '_blank');
-  },
-  render: function() {
-    var tweet = this.props.tweet;
-    var userUrl = 'https:/twitter.com/' + tweet.user.screen_name;
+  }
+
+  render() {
+    let tweet = this.props.tweet;
+    let userUrl = 'https:/twitter.com/' + tweet.user.screen_name;
 
     return (
       <div className={styles.tweetBox}>
@@ -19,6 +20,4 @@ var TweetText = React.createClass({
       </div>
     );
   }
-});
-
-module.exports = TweetText;
+};

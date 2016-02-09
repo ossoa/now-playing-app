@@ -1,1 +1,1 @@
-module.exports = require('./TweetText.jsx');
+export {default} from './TweetText.jsx';

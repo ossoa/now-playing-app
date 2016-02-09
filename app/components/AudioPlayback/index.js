@@ -1,1 +1,1 @@
-module.exports = require('./AudioPlayback.jsx');
+export {default} from './AudioPlayback.jsx';

@@ -1,1 +1,1 @@
-module.exports = require('./NowPlaying.jsx');
+export {default} from './NowPlaying.jsx';

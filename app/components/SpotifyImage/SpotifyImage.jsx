@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styles from './SpotifyImage.scss';
 
-export default class SpotifyImage extends Component {
+export default class SpotifyImage extends React.Component {
   openSpotify() {
     let spotify = this.props.spotify;
     let temp = spotify.uri.split(':');
@@ -38,7 +38,7 @@ export default class SpotifyImage extends Component {
     if (imageUrl) {
       imageStyle.backgroundImage ='url(' + imageUrl + ')';
 
-      var body = document.querySelector('.body-blur');
+      let body = document.querySelector('.body-blur');
       body.setAttribute('style', 'background-image:url(' + this.getImageUrl() + ')');
     }
 
@@ -46,4 +46,4 @@ export default class SpotifyImage extends Component {
       <div className={classString} style={imageStyle} onClick={this.openSpotify}></div>
     );
   }
-};
+}

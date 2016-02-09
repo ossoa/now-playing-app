@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import NowPlayingBox from '../NowPlaying';
 import './App.scss';
 
-export default class App extends Component {
+export default class App extends React.Component {
   render() {
     return (
       <div>
@@ -11,4 +11,4 @@ export default class App extends Component {
       </div>
     );
   }
-};
+}

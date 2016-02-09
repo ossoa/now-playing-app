@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import http from '../../utils/http';
 import TweetText from '../TweetText';
 import SpotifyImage from '../SpotifyImage';
 import AudioPlayback from '../AudioPlayback';
 import styles from './NowPlaying.scss';
 
-export default class NowPlayingBox extends Component {
+export default class NowPlayingBox extends React.Component {
   constructor(props) {
     super(props);
 
@@ -66,4 +66,4 @@ export default class NowPlayingBox extends Component {
       );
     }
   }
-};
+}

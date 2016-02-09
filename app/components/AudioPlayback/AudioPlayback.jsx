@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class AudioPlayback extends Component {
+export default class AudioPlayback extends React.Component {
   togglePlay(event) {
     console.log('toggle play');
     if (event.keyCode !== 32) return;
 
     this.isMuted = !this.isMuted;
-
-    console.log(this._audio);
 
     if (this._audio) {
       this._audio.muted = this.isMuted;
@@ -29,7 +27,7 @@ export default class AudioPlayback extends Component {
     return nextProps.audio !== this.props.audio;
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate() {
     if (this.props.audio) {
       this._audio.pause();
       this._audio.load();
@@ -51,4 +49,4 @@ export default class AudioPlayback extends Component {
       return false;
     }
   }
-};
+}

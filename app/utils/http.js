@@ -1,4 +1,4 @@
-var http = {};
+let http = {};
 
 /**
  * Makes an HTTP request
@@ -10,12 +10,12 @@ var http = {};
  *                                        Example [['Authorization', 'Bearer X'], ['...', '...']]
  * @param  {boolean}    [opt_ignore_error]  Don't capture errors from this request in Raven.
  */
-http.request = function(method, url, callback, data, opt_headers, opt_ignore_error) {
+http.request = function(method, url, callback, data, opt_headers) {
 
-  var xhr = new XMLHttpRequest();
+  let xhr = new XMLHttpRequest();
 
   xhr.onload = function() {
-    var err;
+    let err;
 
     // Some HTTP 50x status codes shall cause the callback to consider the response an error.
     if (this.status >= 500 && this.status <= 504) {
@@ -38,7 +38,7 @@ http.request = function(method, url, callback, data, opt_headers, opt_ignore_err
 
   if (opt_headers) {
 
-    var i = 0, l = opt_headers.length, obj;
+    let i = 0, l = opt_headers.length, obj;
 
     for (; i < l; i++) {
       obj = opt_headers[i];
@@ -49,4 +49,4 @@ http.request = function(method, url, callback, data, opt_headers, opt_ignore_err
   xhr.send(data);
 };
 
-module.exports = http;
+export default http;

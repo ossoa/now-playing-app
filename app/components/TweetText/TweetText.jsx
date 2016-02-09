@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styles from './TweetText.scss';
 
-export default class TweetText extends Component {
+export default class TweetText extends React.Component {
   openTweet() {
     let tweet = this.props.tweet;
     let tweetUrl = 'https:/twitter.com/' + tweet.user.screen_name + '/status/' + tweet.id_str;
@@ -20,4 +20,4 @@ export default class TweetText extends Component {
       </div>
     );
   }
-};
+}

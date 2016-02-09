@@ -7,21 +7,16 @@ var AudioPlayback = React.createClass({
 
     this.isMuted = !this.isMuted;
 
-    if (this.audio) {
-      this.audio.muted = this.isMuted;
+    if (this._audio) {
+      this._audio.muted = this.isMuted;
     }
 
     console.log('[muted]', this.isMuted);
   },
 
-  getDOMNodeTag: function() {
-    return ReactDOM.findDOMNode() ? ReactDOM.findDOMNode().tagName : null;
-  },
-
   componentDidMount: function() {
-    if (this.getDOMNodeTag() === 'AUDIO') {
-      this.audio = this.getDOMNode();
-      this.audio.play();
+    if (this.props.audio) {
+      this._audio.play();
     }
 
     this.isMuted = false;
@@ -33,18 +28,10 @@ var AudioPlayback = React.createClass({
   },
 
   componentDidUpdate: function(prevProps) {
-    if (this.getDOMNodeTag() === 'AUDIO') {
-      var audio = this.getDOMNode();
-      audio.pause();
-      audio.load();
-      audio.play();
-
-      this.audio = audio;
-    } else {
-      if (this.audio) {
-        this.audio.pause();
-        this.audio = null;
-      }
+    if (this.props.audio) {
+      this._audio.pause();
+      this._audio.load();
+      this._audio.play();
     }
   },
 
@@ -54,7 +41,7 @@ var AudioPlayback = React.createClass({
 
     if (audioUrl) {
       return (
-        <audio muted={isMuted}>
+        <audio muted={isMuted} ref={(c) => this._audio = c} >
           <source src={audioUrl} type="audio/mpeg" />
         </audio>
       );

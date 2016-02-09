@@ -15,7 +15,7 @@ export default class TweetText extends React.Component {
 
     return (
       <div className={styles.tweetBox}>
-        <p className={styles.tbText} onClick={this.openTweet}>{tweet.text}</p>
+        <p className={styles.tbText} onClick={this.openTweet.bind(this)}>{tweet.text}</p>
         <p className={styles.tbUser}>by <a href={userUrl}>{tweet.user.screen_name}</a></p>
       </div>
     );

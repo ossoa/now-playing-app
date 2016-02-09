@@ -43,7 +43,7 @@ export default class SpotifyImage extends React.Component {
     }
 
     return (
-      <div className={classString} style={imageStyle} onClick={this.openSpotify}></div>
+      <div className={classString} style={imageStyle} onClick={this.openSpotify.bind(this)}></div>
     );
   }
 }

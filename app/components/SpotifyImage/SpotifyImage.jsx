@@ -27,7 +27,21 @@ class SpotifyImage extends React.Component {
       default:
         return false;
     }
+  }
 
+  updateBackgroundImage() {
+    if (this.getImageUrl()) {
+      let body = document.querySelector('.body-blur');
+      body.setAttribute('style', 'background-image:url(' + this.getImageUrl() + ')');
+    }
+  }
+
+  componentDidMount() {
+    this.updateBackgroundImage();
+  }
+
+  componentDidUpdate() {
+    this.updateBackgroundImage();
   }
 
   render() {
@@ -37,9 +51,6 @@ class SpotifyImage extends React.Component {
 
     if (imageUrl) {
       imageStyle.backgroundImage ='url(' + imageUrl + ')';
-
-      let body = document.querySelector('.body-blur');
-      body.setAttribute('style', 'background-image:url(' + this.getImageUrl() + ')');
     }
 
     return (
@@ -47,7 +58,6 @@ class SpotifyImage extends React.Component {
     );
   }
 }
-
 
 SpotifyImage.propTypes = {
   spotify: React.PropTypes.object

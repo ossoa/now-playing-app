@@ -4,7 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
-import AppView from '../AppView';
+import NowPlayingContainer from '../NowPlayingContainer';
 import reducer from '../../reducers';
 import {fetchPlayingItem} from '../../actions';
 
@@ -37,7 +37,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <AppView />
+        <NowPlayingContainer />
       </Provider>
     );
   }

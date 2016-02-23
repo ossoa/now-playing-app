@@ -1,24 +1,11 @@
 import React from 'react';
-import {connect} from 'react-redux';
 
 import TweetText from '../TweetText';
 import SpotifyImage from '../SpotifyImage';
 import AudioPlayback from '../AudioPlayback';
 import styles from './NowPlaying.scss';
 
-const mapStateToProps = (state) => {
-  if (state.data) {
-    return {
-      spotify: state.data.spotify,
-      tweet: state.data.tweet
-    };
-  }
-  else {
-    return {};
-  }
-};
-
-class NowPlayingBox extends React.Component {
+class NowPlaying extends React.Component {
   constructor(...args) {
     super(...args);
   }
@@ -44,10 +31,13 @@ class NowPlayingBox extends React.Component {
 
     if (tweetData) {
       return (
-        <div className={styles.nowPlayingBox}>
-          <SpotifyImage spotify={spotifyData} />
-          <TweetText tweet={tweetData} />
-          <AudioPlayback audio={audioUrl} />
+        <div>
+          <div className="body-blur"></div>
+          <div className={styles.nowPlayingBox}>
+            <SpotifyImage spotify={spotifyData} />
+            <TweetText tweet={tweetData} />
+            <AudioPlayback audio={audioUrl} />
+          </div>
         </div>
       );
     } else {
@@ -60,14 +50,10 @@ class NowPlayingBox extends React.Component {
   }
 }
 
-NowPlayingBox.propTypes = {
+NowPlaying.propTypes = {
   spotify: React.PropTypes.object,
   tweet: React.PropTypes.object,
   onReload: React.PropTypes.func
 };
 
-const NowPlayingBoxContainer = connect(
-  mapStateToProps
-)(NowPlayingBox);
-
-export default NowPlayingBoxContainer;
+export default NowPlaying;

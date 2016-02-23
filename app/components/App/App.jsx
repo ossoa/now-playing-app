@@ -1,14 +1,44 @@
 import React from 'react';
-import NowPlayingBox from '../NowPlaying';
-import './App.scss';
+
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+
+import AppView from '../AppView';
+import reducer from '../../reducers';
+import {fetchPlayingItem} from '../../actions';
+
+const POLL_INTERVAL = 20000;
+
+const store = createStore(
+  reducer,
+  applyMiddleware(thunk)
+);
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    store.dispatch(fetchPlayingItem({})).then(() =>
+      this.render()
+    );
+
+    setInterval(() => this.reload(), POLL_INTERVAL);
+  }
+
+  reload() {
+    const state = store.getState();
+
+    if (!state.isFetching) {
+      store.dispatch(fetchPlayingItem(state));
+    }
+  }
+
   render() {
     return (
-      <div>
-        <div className="body-blur"></div>
-        <NowPlayingBox url="https://now-playing-feed.herokuapp.com/" pollInterval={20000} />
-      </div>
+      <Provider store={store}>
+        <AppView />
+      </Provider>
     );
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class AudioPlayback extends React.Component {
+class AudioPlayback extends React.Component {
   togglePlay(event) {
     console.log('toggle play');
     if (event.keyCode !== 32) return;
@@ -50,3 +50,12 @@ export default class AudioPlayback extends React.Component {
     }
   }
 }
+
+AudioPlayback.propTypes = {
+  audio: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.bool
+  ])
+};
+
+export default AudioPlayback;

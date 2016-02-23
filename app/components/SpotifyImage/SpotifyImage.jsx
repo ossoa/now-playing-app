@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './SpotifyImage.scss';
 
-export default class SpotifyImage extends React.Component {
+class SpotifyImage extends React.Component {
   openSpotify() {
     let spotify = this.props.spotify;
     let temp = spotify.uri.split(':');
@@ -47,3 +47,10 @@ export default class SpotifyImage extends React.Component {
     );
   }
 }
+
+
+SpotifyImage.propTypes = {
+  spotify: React.PropTypes.object
+};
+
+export default SpotifyImage;

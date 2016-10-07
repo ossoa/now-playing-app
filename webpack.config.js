@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 var config = {
   entry: ['./app/main.jsx'],
   resolve: { alias: {} },
@@ -5,6 +7,11 @@ var config = {
     path: './build',
     filename: 'bundle.js'
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+    })
+  ],
   module: {
     loaders: [
       {

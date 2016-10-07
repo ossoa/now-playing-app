@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "./node_modules/eslint/bin/eslint.js app/*.jsx app/**/*.jsx app/*.js app/**/*.js",
     "dev": "webpack-dev-server --devtool eval --progress --colors --content-base build",
-    "prod": "webpack -p",
+    "prod": "NODE_ENV=production webpack -p",
     "deploy": "npm run prod && gh-pages -d build"
   },
   "repository": {

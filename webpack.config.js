@@ -1,10 +1,11 @@
 var webpack = require('webpack');
+var path = require('path');
 
 var config = {
-  entry: ['./app/main.jsx'],
+  entry: [path.join(__dirname, 'app/main.jsx')],
   resolve: { alias: {} },
   output: {
-    path: './build',
+    path: path.join(__dirname, 'build'),
     filename: 'bundle.js'
   },
   plugins: [
@@ -17,16 +18,22 @@ var config = {
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel',
-        query: {
-          presets: ['es2015', 'stage-2', 'react']
-        }
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['es2015', 'stage-2', 'react']
+          }
+        },
       },
 
       // SASS
       {
         test: /\.scss$/,
-        loader: 'style!css!sass'
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
       }
     ]
   }

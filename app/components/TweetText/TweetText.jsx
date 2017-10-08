@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './TweetText.scss';
 
 class TweetText extends React.Component {
@@ -23,7 +24,7 @@ class TweetText extends React.Component {
 }
 
 TweetText.propTypes = {
-  tweet: React.PropTypes.object
+  tweet: PropTypes.object
 };
 
 export default TweetText;

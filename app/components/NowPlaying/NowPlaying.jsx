@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import TweetText from '../TweetText';
 import SpotifyImage from '../SpotifyImage';
@@ -51,9 +52,9 @@ class NowPlaying extends React.Component {
 }
 
 NowPlaying.propTypes = {
-  spotify: React.PropTypes.object,
-  tweet: React.PropTypes.object,
-  onReload: React.PropTypes.func
+  spotify: PropTypes.object,
+  tweet: PropTypes.object,
+  onReload: PropTypes.func
 };
 
 export default NowPlaying;

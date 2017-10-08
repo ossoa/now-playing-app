@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './SpotifyImage.scss';
 
 class SpotifyImage extends React.Component {
@@ -60,7 +61,7 @@ class SpotifyImage extends React.Component {
 }
 
 SpotifyImage.propTypes = {
-  spotify: React.PropTypes.object
+  spotify: PropTypes.object
 };
 
 export default SpotifyImage;

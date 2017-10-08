@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class AudioPlayback extends React.Component {
   togglePlay(event) {
@@ -52,9 +53,9 @@ class AudioPlayback extends React.Component {
 }
 
 AudioPlayback.propTypes = {
-  audio: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.bool
+  audio: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool
   ])
 };
 

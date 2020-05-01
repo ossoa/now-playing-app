@@ -7,7 +7,9 @@
     "lint": "./node_modules/eslint/bin/eslint.js app/*.jsx app/**/*.jsx app/*.js app/**/*.js",
     "dev": "webpack-dev-server --devtool eval --progress --colors --content-base build",
     "prod": "NODE_ENV=production webpack -p",
-    "deploy": "npm run prod && gh-pages -d build"
+    "deploy": "npm run prod && gh-pages -d build",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -38,6 +40,8 @@
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.0.1"
-  }
+    "redux-thunk": "^2.0.1",
+    "snyk": "^1.316.2"
+  },
+  "snyk": true
 }
